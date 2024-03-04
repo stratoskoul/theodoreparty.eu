@@ -10,7 +10,7 @@ body {
 	line-height: 1.2;
 	margin: 0 auto;
 	max-width: 700px;
-	background-color: #e6e6e6;
+	background-color: #ffebcc;
 	transition: background-color .5s;
 }
 
@@ -28,91 +28,153 @@ body {
 	position: relative;
     /* height: auto;*/
 	max-width: 550px;
+	width: 500px;
+	display: flex;
+	justify-content: center;
 }
 
-.decoration	 {
-  	/* position: absolute; */
-	top: 0px;
-	background-image: url('../images/upper.png');
+.smoke_title {
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	background-image: url('../images/smoke_title.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	height: 300px;
-	max-width: 550px;
-	width: 100%;
+	height: 180px;
+	width: 380px;
+	/* transform: rotate(-65deg); */
+	z-index: -1;
+}
+
+.smoke {
+	position: absolute;
+	top: 230px;
+	left: 50px;
+	background-image: url('../images/smoke.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 150px;
+	width: 150px;
+	transform: rotate(-65deg);
 	z-index: 1;
 }
 
-.sticky {
-	position: fixed;
-	background-image: url('../images/upper-half.png');
+.smoke2 {
+	top: 410px;
+	left: 130px;
+	width: 130px;
+	height: 130px;
+	transform: rotate(-80deg);
+}
+
+.smoke3 {
+	top: 600px;
+	left: 240px;
+	width: 100px;
 	height: 100px;
+	transform: rotate(-35deg);
 }
 
-.baloons {
-	position: absolute;
-	top: 400px;
-	background-image: url('../images/balloons.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 80% 100%;
-	height: 300px;
-	width: 100%;
-	/* margin: 20px; */
+.smoke4 {
+	top: 780px;
+	left: 180px;
+	width: 90px;
+	height: 90px;
+	transform: rotate(-30deg);
 }
 
-.lion {
-	position: absolute;
-	top: 900px;
-	background-image: url('../images/lion.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 50% 100%;
-	height: 300px;
-	width: 100%;
-	/* margin: 20px; */
+.smoke5 {
+	top: 910px;
+	left: 100px;
+	width: 75px;
+	height: 75px;
+	transform: rotate(-50deg);
 }
 
-.animals {
+.num2{
 	position: absolute;
-	top: 1360px;
-	background-image: url('../images/down.png');
+	top: 880px;
+	left: 250px;
+	background-image: url('../images/2.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	height: 200px;
-	width: 100%;
+	height: 240px;
+	width: 195px;
+	z-index: 1;
+}
+
+.smoke_ex {
+	top: -70px;
+	/* left: 60px; */
+	width: 50px;
+	height: 50px;
+}
+
+.buldozer {
+	position: absolute;
+	top: 1130px;
+	/* left: 25px; */
+	background-image: url('../images/buldozer.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% 100%;
+	height: 340px;
+	width: 420px;
 }
 
 .text {
-	color: #008000;
-	font-size: 1.5em;
-	font-weight: 400;
-	text-align: center;
-	width: 100%;
+	color: #262626;
+	font-size: 1.6em;
+	font-weight: 500;
+	text-align: left;
+	width: 250px;
 }
 
 .text1 {
 	position: absolute;
-	top: 310px;
+	top: 65px;
+	left: 105px;
 }
 
 .text2 {
 	position: absolute;
-	top: 710px;
+	top: 340px;
+	left: 235px;
+}
+
+.text4 {
+	position: absolute;
+	top: 645px;
+	left: 20px;
 }
 
 .text3 {
 	position: absolute;
-	top: 1220px;
+	top: 1480px;
+	left: 30px;
+	width: 100%;
+	margin: 0;
+	/* padding-left: 30px; */
+}
+
+.ribon {
+	position: absolute;
+	top: 1600px;
+	background-image: url('../images/ribon.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 120px;
+	width: 100%;
 }
 
 a:link {
-	color: #006622;
+	color: #002699;
 	background-color: transparent;
 	/* text-decoration: none; */
 	font-weight: bold;
 }
 a:visited {
-	color: #006622;
+	color: #002699;
 	background-color: transparent;
 	/* text-decoration: none; */
 	font-weight: bold;
@@ -123,5 +185,50 @@ a:visited {
 	position: absolute;
 	top: 300px;
 	right: 50%;
-  	transform: translate(50%,-50%);
+	transform: translate(50%,-50%);
+}
+
+.firework {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	background-color: #fff;
+	border-radius: 50%;
+	animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	70% {
+		transform: scale(15);
+		opacity: 0.8;
+	}
+
+	100% {
+		transform: scale(20);
+		opacity: 0;
+	}
+}
+
+.firework-trail {
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	background-color: #fff;
+	border-radius: 50%;
+	animation: trail 1s linear forwards;
+}
+
+@keyframes trail {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
 }
