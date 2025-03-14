@@ -1,13 +1,7 @@
-var myAudio = document.getElementById("audio");
-var isPlaying = false;
+// Basic JavaScript file - currently empty as the invitation doesn't need interactivity
+// You could add features like an RSVP button or animation here in the future
 
-function togglePlay() {
-  isPlaying ? myAudio.pause() : myAudio.play();
-};
-
-myAudio.onplaying = function() {
-  isPlaying = true;
-};
-myAudio.onpause = function() {
-  isPlaying = false;
-};
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Spiderman Birthday Invitation Loaded!");
+  // Add any future interactive features here
+});
