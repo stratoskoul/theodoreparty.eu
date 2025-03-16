@@ -70,15 +70,15 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    width: 350px;
-    height: 100%;
+    width: 230px;
+    height: 400px;
     z-index: 2;
 }
 
 .title {
     text-align: center;
-    font-size: 5em;
-    margin-bottom: 20px;
+    font-size: 3em;
+    margin-bottom: 10px;
     color: #e23636;
     text-shadow: 2px 2px 0 #0064b5, 4px 4px 0 #000;
     padding: 20px;
@@ -94,7 +94,7 @@ html {
 
 .title2 {
     text-align: left;
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 20px;
     color: #99b3ff;
     text-shadow: 2px 2px 0 #ff4d4d, 4px 4px 0 #000;
@@ -111,7 +111,7 @@ html {
 
 .title3 {
     text-align: center;
-    font-size: 3.1em;
+    font-size: 2.1em;
     margin-bottom: 20px;
     color: #ffff80;
     text-shadow: 2px 2px 0 #ff4d4d, 4px 4px 0 #000;
@@ -153,7 +153,7 @@ html {
 
 .section {
     /* Style for each content section */
-    padding: 20px;
+    padding: 10px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -171,9 +171,9 @@ html {
 }
 
 .comic-border {
-    border: 20px solid white;
+    border: 5px solid white;
     border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 75 75'%3E%3Cpath fill='none' stroke='%23000' stroke-width='4' d='M0,0 L75,0 L75,75 L0,75 Z' stroke-dasharray='10 5'/%3E%3C/svg%3E") 20 repeat;
-    padding: 10px;
+    /* padding: 10px; */
     position: relative;
 }
 
@@ -181,7 +181,7 @@ html {
     background-color: white;
     border: 3px solid #000;
     box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 10px;
     position: relative;
     z-index: 1;
 }
@@ -231,14 +231,4 @@ html {
     position: relative;
     transform: rotate(-1deg);
     border: 2px solid #000;
-}
-
-.bubble{
-    background-image: url(../images/bubble1.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 100%;
-    height: 500px;
-    z-index: 2;
 }
