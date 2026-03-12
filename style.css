@@ -51,14 +51,9 @@ html {
 
 /* Interactive Characters Container */
 .interactive-characters {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    width: 90%;
+    max-width: 800px;
     z-index: 10;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
@@ -71,17 +66,17 @@ html {
 
 /* Character Image */
 .characters-img {
-    height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+    width: 100%;
+    height: 90%;
+    display: block;
     filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.4));
 }
 
 /* Site Title Image */
 .site-title-img {
     position: absolute;
-    top: -2%;
-    left: -5%;
+    top: 2%;
+    left: 4%;
     transform: none;
     width: 200px;
     max-width: 40%;
@@ -114,14 +109,13 @@ html {
 /* Interactive Pull String Container */
 .pull-container {
     position: absolute;
-    top: 37%;
-    /* Anchored directly onto the bottom edge of the toy story logo */
-    left: 5%;
-    /* Aligned with the end of the 'toy story' text on the left */
+    top: 28%;
+    left: 14%;
+    /* Closer to the characters */
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 15;
+    z-index: 4;
     /* Keep high so it's always clickable before reveal */
     cursor: grab;
     transition: opacity 0.5s ease;
@@ -186,7 +180,7 @@ html {
 /* The actual string part */
 .string {
     width: 4px;
-    height: 150px;
+    height: 100px;
     background-color: #f4f1de;
     border-radius: 2px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
