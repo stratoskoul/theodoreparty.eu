@@ -1,0 +1,489 @@
+:root {
+    /* Toy Story Color Palette */
+    --andy-blue: #3075A3;
+    /* Updated to match new background */
+    --cloud-color: #A9B4B9;
+    /* Custom greyish-white matching image */
+    --woody-yellow: #FFD166;
+    --woody-red: #EF476F;
+    --buzz-green: #06D6A0;
+    --buzz-purple: #9D4EDD;
+    --denim: #264653;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Fredoka One', cursive;
+    /* Fun, chunky font for general text */
+    overflow: hidden;
+    /* Prevent scrolling when dragging the pull string */
+    background-color: var(--andy-blue);
+}
+
+/* Andy's Room Wallpaper */
+.wallpaper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('assets/background.jpg');
+    background-size: 150% 150%;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    animation: panWallpaper 30s ease-in-out infinite alternate;
+}
+
+@keyframes panWallpaper {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Interactive Characters Container */
+.interactive-characters {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.interactive-characters.fade-out {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    pointer-events: none;
+}
+
+/* Character Image */
+.characters-img {
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.4));
+}
+
+/* Site Title Image */
+.site-title-img {
+    position: absolute;
+    top: -2%;
+    left: -5%;
+    transform: none;
+    width: 200px;
+    max-width: 40%;
+    z-index: 5;
+    /* Lower than pull string and card */
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.6));
+    animation: floatTitle 4s ease-in-out infinite;
+    transition: opacity 0.5s ease-out;
+    /* Add transition for fading out */
+}
+
+/* Add a class to fade out the title when card opens */
+.site-title-img.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes floatTitle {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Interactive Pull String Container */
+.pull-container {
+    position: absolute;
+    top: 37%;
+    /* Anchored directly onto the bottom edge of the toy story logo */
+    left: 5%;
+    /* Aligned with the end of the 'toy story' text on the left */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 15;
+    /* Keep high so it's always clickable before reveal */
+    cursor: grab;
+    transition: opacity 0.5s ease;
+    animation: floatTitle 4s ease-in-out infinite;
+}
+
+/* Buzz Text Prompt */
+.buzz-prompt {
+    position: absolute;
+    top: 30%;
+    right: 20%;
+    /* Centered right above Buzz's hitbox */
+    color: var(--buzz-green);
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #fff;
+    transform: rotate(10deg);
+    animation: pulsePrompt 2s infinite;
+    pointer-events: none;
+    /* Let clicks pass through to hitbox */
+    z-index: 15;
+}
+
+@keyframes pulsePrompt {
+
+    0%,
+    100% {
+        transform: rotate(10deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(12deg) scale(1.1);
+    }
+}
+
+/* Buzz Lightyear Hitbox */
+.buzz-hitbox {
+    position: absolute;
+    top: 38%;
+    /* Adjust to align with Buzz's chest/buttons vertically */
+    right: 22%;
+    /* Adjusted slightly right */
+    width: 15%;
+    /* Adjust size to cover his buttons */
+    height: 15%;
+    /* Adjust size to cover his buttons */
+    /* Remove the border/background below once correctly positioned! Used for debugging bounds. */
+    /* border: 2px solid red; */
+    /* background: rgba(255, 0, 0, 0.2);  */
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 15;
+}
+
+/* Hide pull string once pulled */
+.pull-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* The actual string part */
+.string {
+    width: 4px;
+    height: 150px;
+    background-color: #f4f1de;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    /* We apply transform origin to top so it scales well, but we will change height directly */
+    transform-origin: top;
+}
+
+/* The pull ring */
+.ring {
+    width: 60px;
+    height: 60px;
+    border: 8px solid white;
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-family: 'Bangers', cursive;
+    color: white;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: background-color 0.2s;
+    /* Transformation starts at 0 */
+    transform: translateY(0);
+}
+
+.ring:active {
+    cursor: grabbing;
+}
+
+/* Invitation Card (Etch A Sketch Theme Image) */
+.invitation-card {
+    background-image: url('assets/etch.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 100%;
+    max-width: 850px;
+    height: 85vh;
+    /* Responsive height */
+    z-index: 20;
+    /* Highest z-index so it overlaps everything when shown */
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.invitation-card.hidden {
+    transform: translateY(100vh) scale(0.5) rotate(10deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Shake Animation to "Erase" the screen */
+.shake-animation {
+    animation: etchShake 0.6s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes etchShake {
+
+    /* Since the card is already translateY(-50%), we must include it in the transform */
+    0% {
+        transform: translateY(-50%) translate(2px, 2px) rotate(0deg);
+    }
+
+    10% {
+        transform: translateY(-50%) translate(-2px, -3px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translateY(-50%) translate(-4px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translateY(-50%) translate(4px, 3px) rotate(0deg);
+    }
+
+    40% {
+        transform: translateY(-50%) translate(2px, -2px) rotate(1deg);
+    }
+
+    50% {
+        transform: translateY(-50%) translate(-2px, 3px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translateY(-50%) translate(-4px, 2px) rotate(0deg);
+    }
+
+    70% {
+        transform: translateY(-50%) translate(4px, 2px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translateY(-50%) translate(-2px, -2px) rotate(1deg);
+    }
+
+    90% {
+        transform: translateY(-50%) translate(2px, 3px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-50%) translate(2px, -3px) rotate(-1deg);
+    }
+}
+
+/* The actual drawing screen mapped over the image */
+.etch-screen {
+    position: absolute;
+    top: 20%;
+    left: 17.5%;
+    width: 65%;
+    height: 60%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Sketchy font for the text */
+    font-family: 'Caveat Brush', cursive;
+    color: #383838;
+}
+
+/* Etch Prompt */
+.etch-prompt {
+    text-align: center;
+    transition: opacity 0.5s ease-out;
+}
+
+.etch-prompt h2 {
+    font-size: 2rem;
+    color: #383838;
+    margin-bottom: 5px;
+    border-bottom: none;
+}
+
+.etch-prompt p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Drawing Animation using CSS */
+/* We will fade elements in sequentially or wipe them to look like drawing */
+#etchDetails.draw-animation>* {
+    opacity: 0;
+    animation: drawIn 0.8s ease-in-out forwards;
+}
+
+#etchDetails.draw-animation h1 {
+    animation-delay: 0.5s;
+}
+
+#etchDetails.draw-animation h2 {
+    animation-delay: 1.2s;
+}
+
+#etchDetails.draw-animation .details {
+    animation-delay: 1.8s;
+}
+
+#etchDetails.draw-animation .rsvp-btn {
+    animation-delay: 2.5s;
+}
+
+@keyframes drawIn {
+    0% {
+        opacity: 0;
+        filter: blur(4px);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.etch-screen h1 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 1.1;
+    /* Overriding previous toy story style for sketchy look */
+    text-shadow: none;
+    letter-spacing: 1px;
+}
+
+.etch-screen h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #383838;
+    padding-bottom: 5px;
+    /* Removing the rotation for the sketch look */
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.details {
+    font-size: 1.3rem;
+    text-align: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.details p {
+    margin: 8px 0;
+}
+
+.details strong {
+    color: #383838;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 1.4rem;
+    text-decoration: underline;
+}
+
+/* The Knob Hitboxes */
+.knob {
+    position: absolute;
+    bottom: 3%;
+    width: 12%;
+    height: 14%;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.knob-left {
+    left: 5%;
+}
+
+.knob-right {
+    right: 5%;
+}
+
+/* =========================================
+   Mobile Responsiveness
+   ========================================= */
+@media (max-width: 600px) {
+
+    /* Shrink the Pull String */
+    .string {
+        height: 100px;
+    }
+
+    .ring {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+        border-width: 6px;
+    }
+
+    /* Keep aspect ratio similar, modify the height slightly */
+    .invitation-card {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .etch-prompt h2 {
+        font-size: 1.5rem;
+    }
+
+    .etch-prompt p {
+        font-size: 1rem;
+    }
+
+    /* Adjust internal text sizes */
+    .etch-screen h1 {
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+    }
+
+    .etch-screen h2 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        padding-bottom: 3px;
+    }
+
+    .details {
+        font-size: 0.9rem;
+    }
+
+    .details p {
+        margin: 2px 0;
+    }
+
+    .details strong {
+        font-size: 0.9rem;
+    }
+}

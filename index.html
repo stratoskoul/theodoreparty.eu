@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theodore is turning 4!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Playful Google Fonts and a sketch font for the Etch a Sketch -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat+Brush&family=Fredoka+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="wallpaper">
+        <div class="interactive-characters" id="charactersContainer">
+            <img src="assets/woody_and_buzz.png" alt="Woody and Buzz" class="characters-img">
+
+            <!-- We keep the title here so it fades out with them -->
+            <img src="assets/toy_story.png" alt="Toy Story Title" class="site-title-img">
+
+            <!-- Interactive Woody Pull String (positioned over Woody's back) -->
+            <div class="pull-container" id="pullContainer">
+                <div class="string" id="pullString"></div>
+                <div class="ring" id="pullRing">PULL</div>
+            </div>
+
+            <!-- Buzz Lightyear Text Prompt & Hitbox -->
+            <div class="buzz-prompt" id="buzzPrompt">PRESS MY<br>BUTTON!</div>
+            <div class="buzz-hitbox" id="buzzHitbox"></div>
+        </div>
+
+        <!-- Hidden Invitation Card (Etch A Sketch Theme) -->
+        <div class="invitation-card hidden" id="invitationCard">
+            <div class="etch-screen" id="etchScreen">
+                <div id="etchPrompt" class="etch-prompt">
+                    <h2>Turn a knob to reveal!</h2>
+                    <p>(Click a knob below)</p>
+                </div>
+                <div id="etchDetails"
+                    style="display: none; width: 100%; height: 100%; flex-direction: column; align-items: center; justify-content: center;">
+                    <h1>YOU'VE GOT A FRIEND IN ME!</h1>
+                    <h2>Ο Θοδωρής γίνεται 4</h2>
+                    <div class="details">
+                        <p><strong>MISSION:</strong> Join us for a Toy Story Adventure!</p>
+                        <p><strong>DATE:</strong> Σάββατο, 04 Απριλίου 2026</p>
+                        <p><strong>TIME:</strong> 11:00 - 14:00</p>
+                        <p><strong>LOCATION:</strong> <a
+                                href="https://www.google.gr/maps/place/WAHO+the+outdoor+project+by+the+place/@38.0137186,23.6727919,15z/data=!4m6!3m5!1s0x14a1a327a1620f57:0x9029dc38b083f6ef!8m2!3d38.0137186!4d23.6727919!16s%2Fg%2F11h5brd3h9"
+                                target="_blank">WAHO the outdoor project by the place!</a></p>
+                    </div>
+                    <!-- <button class="rsvp-btn" id="rsvpBtn">RSVP</button> -->
+                </div>
+            </div>
+            
+            <!-- Etch A Sketch Knobs (Hitboxes) -->
+            <div class="knob knob-left" id="knobLeft"></div>
+            <div class="knob knob-right" id="knobRight"></div>
+        </div>
+    </div>
+
+    <!-- Character Audio Files -->
+    <audio id="woodyAudio" src="assets/woody.mp3"></audio>
+    <audio id="woodyAudio2" src="assets/woody_1.mp3"></audio>
+    <audio id="buzzAudio" src="assets/buzz.mp3"></audio>
+    <!-- Main Background Song -->
+    <audio id="mainAudio" src="assets/main.mp3" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
