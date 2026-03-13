@@ -154,10 +154,12 @@ const etchPrompt = document.getElementById('etchPrompt');
 const etchDetails = document.getElementById('etchDetails');
 let isDetailsRevealed = false;
 
-function handleKnobClick(knob) {
-    // Add twist animation
-    knob.classList.add('twist');
-    setTimeout(() => knob.classList.remove('twist'), 500);
+function handleEtchReveal(e) {
+    // Add twist animation if a knob was specifically clicked
+    if (e && e.target && e.target.classList.contains('knob')) {
+        e.target.classList.add('twist');
+        setTimeout(() => e.target.classList.remove('twist'), 500);
+    }
     
     if (!isDetailsRevealed) {
         isDetailsRevealed = true;
@@ -193,8 +195,7 @@ function handleKnobClick(knob) {
     }
 }
 
-if (knobLeft) knobLeft.addEventListener('click', () => handleKnobClick(knobLeft));
-if (knobRight) knobRight.addEventListener('click', () => handleKnobClick(knobRight));
+if (invitationCard) invitationCard.addEventListener('click', handleEtchReveal);
 
 // Buzz Hitbox Logic
 const buzzHitbox = document.getElementById('buzzHitbox');

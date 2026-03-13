@@ -75,11 +75,11 @@ html {
 /* Site Title Image */
 .site-title-img {
     position: absolute;
-    top: 2%;
+    top: -6%;
     left: 4%;
     transform: none;
-    width: 200px;
-    max-width: 40%;
+    width: 220px;
+    max-width: 45%;
     z-index: 5;
     /* Lower than pull string and card */
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.6));
@@ -109,7 +109,7 @@ html {
 /* Interactive Pull String Container */
 .pull-container {
     position: absolute;
-    top: 28%;
+    top: 23%;
     left: 14%;
     /* Closer to the characters */
     display: flex;
@@ -430,6 +430,14 @@ html {
    Mobile Responsiveness
    ========================================= */
 @media (max-width: 600px) {
+
+    /* Adjust the Site Title Position for Mobile */
+    .site-title-img {
+        top: -8%;
+        left: 2%;
+        width: 180px;
+        max-width: 55%;
+    }
 
     /* Shrink the Pull String */
     .string {
